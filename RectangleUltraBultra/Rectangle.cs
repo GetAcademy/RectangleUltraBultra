@@ -8,6 +8,23 @@ namespace RectangleUltraBultra
         public Position Position2;
         public ConsoleColor Color;
 
+        private static Random _random = new Random();
+
+        public static Rectangle CreateRandomRectangle()
+        {
+            var rectangle = new Rectangle();
+            var x = _random.Next(0, 30);
+            var y = _random.Next(0, 30);
+            rectangle.Position1 = new Position { X = x, Y = y };
+            rectangle.Position2 = new Position
+            {
+                X = x + _random.Next(10, 30), 
+                Y = y + _random.Next(10, 30)
+            };
+            rectangle.Color = (ConsoleColor) _random.Next(0, 15);
+            return rectangle;
+        }
+
         public int GetWidth()
         {
             return Position2.X - Position1.X;
