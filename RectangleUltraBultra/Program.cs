@@ -6,33 +6,43 @@ namespace RectangleUltraBultra
     {
         static void Main(string[] args)
         {
-            //var position = new Position {
-            //    X = 5,
-            //    Y = 7
-            //};
-            var position = new Position();
-            position.X = 5;
-            position.Y = 7;
-            //int x = 5;
-            //int y = 7;
-            var width = 10;
-            var height = 4;
-            var color = ConsoleColor.Green;
+            var rectangle = new Rectangle();
+            rectangle.Position1 = new Position { X = 5, Y = 7 };
+            rectangle.Position2 = new Position { X = 15, Y = 11 };
+            rectangle.Color = ConsoleColor.Green;
 
             while (true)
             {
                 Console.Clear();
+                var height = rectangle.Position2.Y - rectangle.Position1.Y;
                 for (var dy = 0; dy < height; dy++)
                 {
-                    var linePosition = position.GetLinePosition(dy);
-                    DrawLine(linePosition, color, width);
+                    var linePosition = rectangle.Position1.GetLinePosition(dy);
+                    var width = rectangle.Position2.X - rectangle.Position1.X;
+                    DrawLine(linePosition, rectangle.Color, width);
                 }
 
                 var key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.RightArrow) position.X++;
-                else if (key.Key == ConsoleKey.LeftArrow) position.X--;
-                else if (key.Key == ConsoleKey.UpArrow) position.Y--;
-                else if (key.Key == ConsoleKey.DownArrow) position.Y++;
+                if (key.Key == ConsoleKey.RightArrow)
+                {
+                    rectangle.Position1.X++;
+                    rectangle.Position2.X++;
+                }
+                else if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    rectangle.Position1.X--;
+                    rectangle.Position2.X--;
+                }
+                else if (key.Key == ConsoleKey.UpArrow)
+                {
+                    rectangle.Position1.Y--;
+                    rectangle.Position2.Y--;
+                }
+                else if (key.Key == ConsoleKey.DownArrow)
+                {
+                    rectangle.Position1.Y++;
+                    rectangle.Position2.Y++;
+                }
             }
         }
 
