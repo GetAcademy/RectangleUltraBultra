@@ -4,7 +4,7 @@ namespace RectangleUltraBultra
 {
     class OldProgram
     {
-        static void Main(string[] args)
+        static void MainX(string[] args)
         {
             var x = 5;
             var y = 7;
